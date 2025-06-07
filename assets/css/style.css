@@ -4,6 +4,7 @@ header nav a { margin: 0 10px; text-decoration: none; color: #333; }
 header, footer { background: #f4f4f4; padding: 10px 20px; margin-bottom: 20px; text-align: center; }
 footer { margin-top: 40px; font-size: 0.9em; }
 
+/* Search bar styles */
 .search-wrapper {
   width: 50px;
   height: 50px;
@@ -57,13 +58,13 @@ footer { margin-top: 40px; font-size: 0.9em; }
   font-size: 1rem;
 }
 
+
 /* Navbar container */
 .navbar {
   overflow: hidden;
   background-color: #333;
   font-family: Arial;
 }
-
 /* Links inside the navbar */
 .navbar a {
   float: left;
@@ -74,43 +75,39 @@ footer { margin-top: 40px; font-size: 0.9em; }
   text-decoration: none;
 }
 
-/* The dropdown container */
+/* Dropdown container */
 .dropdown {
-  float: left;
-  overflow: hidden;
+  position: relative;
+  display: inline-block;
 }
 
 /* Dropdown button */
-.dropdown .dropbtn {
-  font-size: 16px;
-  border: none;
-  outline: none;
+.dropbtn {
+  background-color: transparent;
   color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
-}
-
-/* Add a red background color to navbar links on hover */
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 8px;
 }
 
 /* Dropdown content (hidden by default) */
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: #4B2E83;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  left: 0;
+  top: 100%;
 }
 
 /* Links inside the dropdown */
 .dropdown-content a {
   float: none;
-  color: black;
+  color: white;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -119,7 +116,7 @@ footer { margin-top: 40px; font-size: 0.9em; }
 
 /* Add a grey background color to dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: #684DA5;
 }
 
 /* Show the dropdown menu on hover */
