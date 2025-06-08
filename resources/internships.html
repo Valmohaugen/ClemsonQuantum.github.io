@@ -15,30 +15,39 @@
 </head>
 <body>
   <header>
-    <!-- Navigation Bar -->
+    <!-- Navigation bar -->
     <div class="nav">
       <a href="../index.html">About</a>
       <a href="../news.html">News</a>
 
-      <!-- Dropdown for Events -->
+      <!-- Dropdown menu for Events -->
       <div class="dropdown">
-        <a href="../events/events.html" class="dropbtn">Events
-          <i class="fa-solid fa-caret-down"></i>
-        </a>
+        <a href="../events/events.html" class="dropbtn">Events <i class="fa-solid fa-caret-down"></i></a>
+        <a href="../events/upcoming-events.html">Upcoming Events</a>
+
+        <!-- Dropdown menu for Hackathons -->
         <div class="dropdown-content">
-          <a href="../events/upcoming-events.html">Upcoming Events</a>
-          <a href="../events/hackathons.html">Hackathons</a>
-          <a href="../events/workshops.html">Workshops</a>
+          <div class="sub-dropdown">
+            <a href="/events/hackathons/hackathons.html">Hackathons <i class="fa-solid fa-caret-right"></i></a>
+            <div class="sub-dropdown-content">
+              <a href="/events/hackathons/2025-SC-Quantathon-v2.html">SC Quantathon v2 2025</a>
+              <a href="/events/hackathons/2025-NYUAD.html">NYUAD 2025</a>
+              <a href="/events/hackathons/2025-Y-Quantum.html">Y Quantum 2025</a>
+              <a href="/events/hackathons/2025-iQuHack.html">iQuHack 2025</a>
+              <a href="/events/hackathons/2024-SC-Quantathon-v1.html">SC Quantathon v1 2024</a>
+            </div>
+          </div>
+          
+          <a href="../events/workshops-and-seminars.html">Workshops and Seminars</a>
           <a href="../events/events.html">All Events</a>
         </div>
       </div>
-      
+
       <!-- Dropdown for Resources -->
       <div class="dropdown">
-        <a href="resources.html" class="dropbtn">Resources
-          <i class="fa-solid fa-caret-down"></i>
-        </a>
+        <a href="resources.html" class="dropbtn">Resources <i class="fa-solid fa-caret-down"></i></a>
         <div class="dropdown-content">
+          <a href="student-work-and-projects.html">Student Work and Projects</a>
           <a href="quantum-computing-resources.html">Quantum Computing Resources</a>
           <a href="internships.html">Internships</a>
           <a href="resources.html">All Resources</a>
@@ -49,6 +58,8 @@
       <a href="../board.html">Board</a>
       <a href="../contact.html">Contact Us</a>
     </div>
+
+    <!-- Search bar -->
     <div class="search-wrapper">
       <input type="search" placeholder="Search" />
       <button class="search-btn">
@@ -65,6 +76,6 @@
   <footer>
     <p>&copy; Clemson Quantum Club <span id="year"></span></p>
   </footer>
-  <script src="assets/js/main.js"></script>
+  <script src="../assets/js/main.js"></script>
 </body>
 </html>
