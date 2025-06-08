@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -15,26 +15,39 @@
 </head>
 <body>
   <header>
+    <!-- Navigation Bar -->
     <div class="nav">
-      <a href="index.html">About</a>
-      <a href="news.html">News</a>
+      <a href="../index.html">About</a>
+      <a href="../news.html">News</a>
 
+      <!-- Dropdown for Events -->
       <div class="dropdown">
-        <button class="dropbtn">Events
+        <a href="../events/events.html" class="dropbtn">Events
           <i class="fa-solid fa-caret-down"></i>
-        </button>
-
+        </a>
         <div class="dropdown-content">
-          <a href="events.html">All Events</a>
-          <a href="workshops.html">Workshops</a>
-          <a href="hackathons.html">Hackathons</a>
+          <a href="../events/upcoming-events.html">Upcoming Events</a>
+          <a href="../events/hackathons.html">Hackathons</a>
+          <a href="../events/workshops.html">Workshops</a>
+          <a href="../events/events.html">All Events</a>
         </div>
       </div>
       
-      <a href="resources.html">Resources</a>
-      <a href="get-involved.html">Get Involved</a>
-      <a href="board.html">Board</a>
-      <a href="contact.html">Contact Us</a>
+      <!-- Dropdown for Resources -->
+      <div class="dropdown">
+        <a href="resources.html" class="dropbtn">Resources
+          <i class="fa-solid fa-caret-down"></i>
+        </a>
+        <div class="dropdown-content">
+          <a href="quantum-computing-resources.html">Quantum Computing Resources</a>
+          <a href="internships.html">Internships</a>
+          <a href="resources.html">All Resources</a>
+        </div>
+      </div>
+      
+      <a href="../get-involved.html">Get Involved</a>
+      <a href="../board.html">Board</a>
+      <a href="../contact.html">Contact Us</a>
     </div>
     <div class="search-wrapper">
       <input type="search" placeholder="Search" />
