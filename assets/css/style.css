@@ -39,22 +39,22 @@ footer {
 
 .nav-tab {
     padding: 10px 15px;
-        background-color: transparent;
-        color: #333;
-        border: none;
-        text-decoration: none;
-        display: inline-block;
-        transition: color 0.3s;
+    background-color: transparent;
+    color: #333;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.3s;
 }
 .dropdown-btn {
-        background-color: transparent;
-        color: #333;
-        padding: 10px 15px;
-        border: none;
-        cursor: pointer;
-        text-decoration: none;
-        display: inline-block;
-        transition: color 0.3s;
+    background-color: transparent;
+    color: #333;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.3s;
 }
 .nav-tab:hover {
     background-color: #e9ecef;
