@@ -8,6 +8,7 @@ header a {
   margin: 0 0px; 
   text-decoration: none;
   color: #333; 
+  padding: 0px
 }
 header, footer {
   background: #f4f4f4;
@@ -21,21 +22,57 @@ footer {
 }
 
 /* Navigation bar styles */
-.navbar ul {
-    list-style-type: none;
-    padding: 0px;
-    margin: 0px;
-    background-color: hsl(36, 90%, 50%);
-    overflow: hidden;
+nav {
+  position: relative;
+  display: block; /* Changed from inline-block */
+  width: 100%; /* Make it span full width */
+  background-color: #f4f4f4; /* Optional: add background */
 }
-.navbar a {
-    text-decoration: none;
-    text-align: center;
-    padding: 15px;
-    display: block;
-    color: white;
+.nav {
+  display: flex; /* Use flexbox for horizontal layout */
+  justify-content: space-around; /* Distribute items evenly */
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none; /* Remove bullets if using ul/li */
 }
-.nav-tab {
+.nav button {
+  background-color: hsl(0, 0%, 0%);
+  color: hsl(0, 95%, 40%);
+  padding: 10px 20px; /* Increased padding for better spacing */
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  flex: 1; /* Make buttons expand to fill space */
+  text-align: center;
+}
+.nav a {
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 20px; /* Increased padding */
+  display: block;
+  color: rgb(0, 0, 0);
+  flex: 1; /* Make links expand to fill space */
+}
+.nav-tab:hover {
+  background-color: #e9ecef;
+}
+.navbar a:hover {
+  background-color: hsl(36, 90%, 10%);
+}
+.navbar li {
+  flex: 1; /* Changed from float: left to flex */
+  text-align: center;
+
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown button {
   background-color: white;
   color: hsl(0, 95%, 40%);
   padding: 10px 15px;
@@ -43,55 +80,32 @@ footer {
   cursor: pointer;
   text-decoration: none;
 }
-.nav-tab:hover {
-  background-color: #e9ecef;
-}
-.navbar a:hover {
-    background-color: hsl(36, 90%, 10%);
-}
-.navbar li {
-    float: left;
-}
-
-/* Dropdown styles */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-.dropdown button {
-    background-color: white;
-    color: hsl(0, 95%, 40%);
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-}
 .dropdown a {
-    display: block;
-    color: black;
-    text-decoration: none;
-    padding: 10px 15px;
+  display: block;
+  color: black;
+  text-decoration: none;
+  padding: 10px 15px;
 }
 .dropdown .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: hsl(0, 0%, 95%);
-    min-width: 100px;
-    box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.8);
+  display: none;
+  position: absolute;
+  background-color: hsl(0, 0%, 95%);
+  min-width: 100px;
+  box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.8);
 }
 .dropdown:hover > .dropdown-content {
-    display: block;
+  display: block;
 }
 .dropdown:hover button {
-    background-color: hsl(0, 0%, 70%);
+  background-color: hsl(0, 0%, 70%);
 }
 .dropdown a:hover {
-    color: hsl(0, 0%, 90%);
+  color:   hsl(0, 0%, 90%);
 }
 
 /* Sub-dropdown styles */
 .dropdown-submenu {
-    position: relative;
+  position: relative;
 }
 .dropdown-submenu .dropdown-content {
   display: none;
@@ -108,31 +122,31 @@ footer {
 
 /* Search bar styles */
 .search {
-    --padding: 14px;
+  --padding: 14px;
 
-    width: max-content;
-    display: flex;
-    align-items: center;
-    padding: var(--padding);
-    border-radius: 28px;
-    background: #f6f6f6;
-    width: 250px;
-    transition: box-shadow 0.1s;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  padding: var(--padding);
+  border-radius: 28px;
+  background: #f6f6f6;
+  width: 250px;
+  transition: box-shadow 0.1s;
 }
 .search:focus-within {
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.75)
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.75)
 }
 .search-input {
-    font-size: 16px;
-    font-family: "Lexend", sans-serif;
-    color: #333333;
-    margin-left: var(--padding);
-    outline: none;
-    border: none;
-    background: transparent;
-    flex: 1;
+  font-size: 16px;
+  font-family: "Lexend", sans-serif;
+  color: #333333;
+  margin-left: var(--padding);
+  outline: none;
+  border: none;
+  background: transparent;
+  flex: 1;
 }
 .search-input::placeholder,
 .search-icon {
-    color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
