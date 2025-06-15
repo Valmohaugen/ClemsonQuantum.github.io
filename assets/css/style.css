@@ -37,14 +37,14 @@ footer {
     color: white;
 }
 .nav-tab {
-  background-color: white;
+    background-color: white;
     color: hsl(0, 95%, 40%);
     padding: 10px 15px;
     border: none;
     cursor: pointer;
 }
 .nav-tab:hover {
-  background-color: #e9ecef;
+    background-color: #e9ecef;
 }
 .navbar a:hover {
     background-color: hsl(36, 90%, 10%);
