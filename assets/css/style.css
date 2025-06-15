@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   padding: 20px;
-  margin: auto;
+  margin: 30px;
 }
 header nav a {
   margin: 0 10px; 
@@ -14,7 +14,6 @@ header, footer {
   padding: 10px 20px;
   margin-bottom: 20px;
   text-align: center;
-  width: 100%;
 }
 footer {
   margin-top: 40px;
