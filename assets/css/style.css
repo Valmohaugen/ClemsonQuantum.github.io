@@ -68,6 +68,7 @@ footer {
     padding: 10px 15px;
     border: none;
     cursor: pointer;
+    text-decoration: none;
 }
 .dropdown a {
     display: block;
