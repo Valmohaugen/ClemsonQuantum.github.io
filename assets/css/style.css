@@ -84,7 +84,7 @@ footer {
 }
 .dropdown .dropdown-content {
     display: none;
-    position: absolute;
+    position: relative;
     background-color: hsl(0, 0%, 95%);
     min-width: 100px;
     box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.8);
@@ -102,7 +102,7 @@ footer {
 }
 .dropdown-submenu .dropdown-content {
     display: none;
-    position: absolute;
+    position: relative;
     left: 100%;
     top: 0;
     background-color: beige;
