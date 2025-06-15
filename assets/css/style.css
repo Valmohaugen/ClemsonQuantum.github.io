@@ -24,36 +24,30 @@ footer {
 /* Navigation bar styles */
 nav {
   position: relative;
-  display: block; /* Changed from inline-block */
-  width: 100%; /* Make it span full width */
-  background-color: #f4f4f4; /* Optional: add background */
+  display: inline-block;
 }
 .nav {
-  display: flex; /* Use flexbox for horizontal layout */
-  justify-content: space-around; /* Distribute items evenly */
+  display: flex;
   align-items: center;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  list-style: none; /* Remove bullets if using ul/li */
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
 }
 .nav button {
-  background-color: hsl(0, 0%, 0%);
+  background-color: white;
   color: hsl(0, 95%, 40%);
-  padding: 10px 20px; /* Increased padding for better spacing */
+  padding: 0px 0px;
   border: none;
   cursor: pointer;
   text-decoration: none;
-  flex: 1; /* Make buttons expand to fill space */
-  text-align: center;
 }
 .nav a {
   text-decoration: none;
   text-align: center;
-  padding: 10px 20px; /* Increased padding */
+  padding: 0px 0px;
   display: block;
   color: rgb(0, 0, 0);
-  flex: 1; /* Make links expand to fill space */
+  flex: 1; 
 }
 .nav-tab:hover {
   background-color: #e9ecef;
@@ -84,13 +78,12 @@ nav {
   display: block;
   color: black;
   text-decoration: none;
-  padding: 10px 15px;
+  padding: 0px 15px;
 }
 .dropdown .dropdown-content {
   display: none;
   position: absolute;
   background-color: hsl(0, 0%, 95%);
-  min-width: 100px;
   box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.8);
 }
 .dropdown:hover > .dropdown-content {
@@ -113,7 +106,7 @@ nav {
   left: 100%;
   top: 0;
   background-color: beige;
-  min-width: 120px;
+  min-width: 0px;
   box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.8);
 }
 .dropdown-submenu:hover > .dropdown-content {
