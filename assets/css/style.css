@@ -37,10 +37,9 @@ footer {
     color: white;
 }
 .nav-tab {
-  /* Copy the same styles from your .dropdown-btn */
   padding: 10px 15px;
   background-color: #f8f9fa;
-  border: 1px solid #ddd;
+  border: none;
   border-radius: 4px;
   text-decoration: none;
   color: #333;
