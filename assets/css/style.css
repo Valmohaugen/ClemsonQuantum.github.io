@@ -29,9 +29,11 @@ nav {
 .nav {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin: 0px;
   padding: 0px;
   list-style: none;
+  gap: 50px;
 }
 .nav button {
   background-color: white;
@@ -44,10 +46,9 @@ nav {
 .nav a {
   text-decoration: none;
   text-align: center;
-  padding: 0px 0px;
+  padding: 8px 16px;
   display: block;
   color: rgb(0, 0, 0);
-  flex: 1; 
 }
 .nav-tab:hover {
   background-color: #e9ecef;
@@ -85,6 +86,8 @@ nav {
   position: absolute;
   background-color: hsl(0, 0%, 95%);
   box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.8);
+  min-width: 220px;
+  padding: 16px 0px;
 }
 .dropdown:hover > .dropdown-content {
   display: block;
