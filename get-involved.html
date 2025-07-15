@@ -61,10 +61,10 @@
     </div>
 
   <main>
-    <h1 style="font-family:Garamond; font-size: 60px; text-align: center; background-image: url('images/title_background.jpg'); background-size: cover; background-position: center; padding: 40px; color: black; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Welcome to the Clemson Quantum Club!</h1>
+    <h1 style="font-family:Garamond; font-size: 60px; text-align: center; color: #fbfcf8; text-shadow: 2px 2px 12px rgb(255, 255, 255);">Welcome to the Clemson Quantum Club!</h1>
   </main>
 
-  <div class = "gallery-wrap" style = " background-image: url('images/title_background.jpg'); background-size: cover; background-position: center; padding: 40px; ">
+  <div class = "gallery-wrap">
       <img src = "images/back.png" id="backBtn">
 
       <div class="gallery">
@@ -81,6 +81,126 @@
       </div>
 
       <img src = "images/next.png" id="nextBtn">
+  </div>
+
+  <h1 style="font-family:Garamond; font-size: 60px; text-align: center; color: #fbfcf8; text-shadow: 2px 2px 12px rgb(255, 255, 255);">Organizers</h1>
+
+  <div class="cards-grid">
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="front" style="background-image: url('images/Nathan.jpeg');">
+          <h2>Nathan Jones</h2>
+          <p>Organizer</p>
+          <button>About Me</button>
+        </div>
+        <div class="back"> 
+          <h1>Nathan Jones</h1>
+          <p>PhD Student and Clemson Alumni '23</p>
+          <p>Advisor: Rong Ge</p>
+          <a href="https://www.linkedin.com/in/njonescomputing/" target="_blank">
+            <img src="images/linkedin.png" alt="LinkedIn Profile">
+          </a>
+          <button>Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="front" style="background-image: url('images/Valentine.jpg');">
+          <h2>Valentine Mohaugen</h2>
+          <p>Organizer</p>
+          <button>About Me</button>
+        </div>
+        <div class="back"> 
+          <h1>Valentine Mohaugen</h1>
+          <p></p>
+          <p></p>
+          <a href="https://www.linkedin.com/in/valentine-mohaugen/" target="_blank">
+            <img src="images/linkedin.png" alt="LinkedIn Profile">
+          </a>
+          <button>Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="front" style="background-image: url('images/Evan.jpg');">
+          <h2>Evan Hall</h2>
+          <p>Organizer</p>
+          <button>About Me</button>
+        </div>
+        <div class="back"> 
+          <h1>Evan Hall</h1>
+          <p></p>
+          <p></p>
+          <a href="https://www.linkedin.com/in/evanlandonhall/" target="_blank">
+            <img src="images/linkedin.png" alt="LinkedIn Profile">
+          </a>
+          <button>Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="front" style="background-image: url('images/Caroline.jpg');">
+          <h2>Caroline Cadena</h2>
+          <p>Organizer</p>
+          <button>About Me</button>
+        </div>
+        <div class="back"> 
+          <h1>Caroline Cadena</h1>
+          <p></p>
+          <p></p>
+          <a href="https://www.linkedin.com/in/carolinecadena/" target="_blank">
+            <img src="images/linkedin.png" alt="LinkedIn Profile">
+          </a>
+          <button>Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="front" style="background-image: url('images/Rong.jpg');">
+          <h2>Rong Ge</h2>
+          <p>Organizer</p>
+          <button>About Me</button>
+        </div>
+        <div class="back"> 
+          <h1>Rong Ge</h1>
+          <p></p>
+          <p></p>
+          <a href="hthttps://www.linkedin.com/in/rong-ge-64416719/" target="_blank">
+            <img src="images/linkedin.png" alt="LinkedIn Profile">
+          </a>
+          <button>Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="front" style="background-image: url('images/Question.jpg');">
+          <h2>TBD</h2>
+          <p>...</p>
+          <button>About Me</button>
+        </div>
+        <div class="back"> 
+          <h1>TBD</h1>
+          <p>...</p>
+          <button>Back</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -108,23 +228,46 @@
     const overlay = document.getElementById('imgOverlay');
     const overlayImg = document.getElementById('imgOverlayPic');
   
-
-  document.querySelectorAll('.gallery div img').forEach(img => {
-    img.addEventListener('click', function() {
-      overlayImg.src = this.src;
-      overlay.classList.add('active');
+    document.querySelectorAll('.gallery div img').forEach(img => {
+      img.addEventListener('click', function() {
+        overlayImg.src = this.src;
+        overlay.classList.add('active');
+      });
+    });
+    
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) {
+        overlay.classList.remove('active');
+      }
     });
   });
-  
-  
-  overlay.addEventListener('click', function(e) {
-    if (e.target === overlay) {
-      overlay.classList.remove('active');
-    }
+
+  // Add card flipping functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get all the cards on the page
+    const cards = document.querySelectorAll('.card');
+    
+    // For each card, add click event listeners to the buttons
+    cards.forEach(card => {
+      const frontButton = card.querySelector('.front button');
+      const backButton = card.querySelector('.back button');
+      const cardInner = card.querySelector('.card-inner');
+      
+      // When "About Me" button is clicked, flip the card
+      if (frontButton) {
+        frontButton.addEventListener('click', function() {
+          cardInner.style.transform = 'rotateY(180deg)';
+        });
+      }
+      
+      // When "Back" button is clicked, flip back to front
+      if (backButton) {
+        backButton.addEventListener('click', function() {
+          cardInner.style.transform = 'rotateY(0deg)';
+        });
+      }
+    });
   });
-
-});
-
 </script>
 
  <div id="imgOverlay" class="img-overlay">
