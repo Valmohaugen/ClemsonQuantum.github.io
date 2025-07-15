@@ -4,16 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About</title>
+  <title>Get Involved</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" />
 </head>
 
-<body>
-  <header>
+<body style= "background-image: linear-gradient(black, blue); padding: 40px 40px 0 40px;">
     <!-- Navigation bar -->
     <div class="nav">
-      <a href="/index.html">Home</a>
+      <a href="/index.html"> <img src = "images/logo.png" height = "40"> </a>
       <a href="/news.html">News</a>
 
       <!-- Dropdown menu for Events -->
@@ -41,7 +40,7 @@
 
       <!-- Dropdown for Resources -->
       <div class="dropdown">
-        <a href="/resources/resources.html" class="dropdown-btn">Resources</a>
+        <a href="/resources/resources.html" class="dropdown-btn" style = "color: white;">Resources</a>
         <div class="dropdown-content">
           <a href="/resources/student-work-and-projects.html">Student Work & Projects</a>
           <a href="/resources/quantum-computing-resources.html">Quantum Computing Resources</a>
@@ -49,19 +48,9 @@
           <a href="/resources/resources.html">All Resources</a>
         </div>
       </div>
+      
+      <a href="/get-involved.html">Get Involved</a>
 
-      <a href="/board.html">Board</a>
-
-      <!-- Dropdown for Contact -->
-      <div class="dropdown">
-        <a class="dropdown-btn">Contact</a>
-        <div class="dropdown-content">
-          <a href="https://www.instagram.com/">Instagram</a>
-          <a href="https://x.com/home?lang=en">X</a>
-          <a href="https://clemson.campuslabs.com/engage/">Tiger Quest</a>
-        </div>
-      </div>
-    
       <!-- Search bar -->
       <form>
         <div class="search">
@@ -69,14 +58,80 @@
             <input class="search-input" type="search" placeholder="Search">
         </div>
       </form>
-
     </div>
-  </header>
 
   <main>
-    <h1>Welcome to the Clemson Quantum Club!</h1>
-    <p>Under construction 🛠️🚧</p>
+    <h1 style="font-family:Garamond; font-size: 60px; text-align: center; background-image: url('images/title_background.jpg'); background-size: cover; background-position: center; padding: 40px; color: black; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Welcome to the Clemson Quantum Club!</h1>
   </main>
+
+  <div class = "gallery-wrap" style = " background-image: url('images/title_background.jpg'); background-size: cover; background-position: center; padding: 40px; ">
+      <img src = "images/back.png" id="backBtn">
+
+      <div class="gallery">
+        <div>
+          <span> <img src = "images/image-1.jpg"></span>
+          <span> <img src = "images/image-2.jpg"></span>
+          <span> <img src = "images/image-3.jpeg"></span>
+        </div>
+                <div>
+          <span> <img src = "images/image-4.jpg"></span>
+          <span> <img src = "images/image-5.png"></span>
+          <span> <img src = "images/image-6.jpg"></span>
+        </div>
+      </div>
+
+      <img src = "images/next.png" id="nextBtn">
+  </div>
+
+  <script>
+    let scrollContainer = document.querySelector(".gallery");
+    let backBtn = document.getElementById("backBtn");
+    let nextBtn = document.getElementById("nextBtn");
+
+    scrollContainer.addEventListener("wheel", (evt) => {
+      evt.preventDefault();
+      scrollContainer.scrollLeft += evt.deltaY;
+      scrollContainer.style.scrollBehavior = "auto";
+    });
+
+    nextBtn.addEventListener("click", () => {
+      scrollContainer.style.scrollBehavior = "smooth";
+      scrollContainer.scrollLeft += 1200;
+    });
+
+    backBtn.addEventListener("click", () => {
+      scrollContainer.style.scrollBehavior = "smooth";
+      scrollContainer.scrollLeft -= 1200;
+    });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('imgOverlay');
+    const overlayImg = document.getElementById('imgOverlayPic');
+  
+
+  document.querySelectorAll('.gallery div img').forEach(img => {
+    img.addEventListener('click', function() {
+      overlayImg.src = this.src;
+      overlay.classList.add('active');
+    });
+  });
+  
+  
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) {
+      overlay.classList.remove('active');
+    }
+  });
+
+});
+
+</script>
+
+ <div id="imgOverlay" class="img-overlay">
+  <span class="close-btn">&times;</span>
+  <img id="imgOverlayPic" class="img-overlay-pic" src="">
+</div>
+
 
   <footer>
     <p>&copy; Clemson Quantum Club <span id="year"></span></p>

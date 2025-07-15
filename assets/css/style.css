@@ -9,16 +9,27 @@ header a {
   text-decoration: none;
   color: #333; 
   padding: 0px
+  
 }
 header, footer {
-  background: #f4f4f4;
   padding: 10px 20px;
-  margin-bottom: 20px;
+
   text-align: center;
 }
 footer {
+  background: black;
+  color:white;
   margin-top: 40px;
+  padding: 20px 0;
   font-size: 0.9em;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-bottom: -40px; /* Match the body padding */
+  text-align: center;
 }
 
 /* Navigation bar styles */
@@ -27,6 +38,10 @@ nav {
   display: inline-block;
 }
 .nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,6 +49,8 @@ nav {
   padding: 0px;
   list-style: none;
   gap: 50px;
+  background-color: black;
+  z-index: 1000; /* Add a high z-index to ensure navbar stays on top */
 }
 .nav button {
   background-color: white;
@@ -48,7 +65,7 @@ nav {
   text-align: center;
   padding: 8px 16px;
   display: block;
-  color: rgb(0, 0, 0);
+  color: white;
 }
 .nav-tab:hover {
   background-color: #e9ecef;
@@ -66,9 +83,9 @@ nav {
 .dropdown {
   position: relative;
   display: inline-block;
+  
 }
 .dropdown button {
-  background-color: white;
   color: hsl(0, 95%, 40%);
   padding: 10px 15px;
   border: none;
@@ -77,10 +94,21 @@ nav {
 }
 .dropdown a {
   display: block;
-  color: black;
+  color: black; 
   text-decoration: none;
   padding: 0px 15px;
 }
+
+/* Specific style for main navigation dropdown buttons to keep them white */
+.nav > .dropdown > a.dropdown-btn {
+  color: white; 
+}
+
+/* Specific style for dropdown content links to be black */
+.dropdown .dropdown-content a {
+  color: black; 
+}
+
 .dropdown .dropdown-content {
   display: none;
   position: absolute;
@@ -217,4 +245,125 @@ nav {
   max-width: 90vw;
   max-height: 90vh;
   box-shadow: 0 0 20px #000;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  grid-template-rows: repeat(2, auto); 
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Adjust individual card styling for grid */
+.card {
+  width: 100%;
+  height: 450px;
+  margin: 0;
+  background: transparent;
+  perspective: 1000px;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.front, .back {
+  width: 90%;
+  height: 100%;
+  border-radius: 15px;
+  position: absolute;
+  backface-visibility: hidden;
+  top: 0;
+  left: 0; /* Ensure both sides are at the same position */
+}
+
+.front{
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+  padding: 0 20px 20px 20px;
+}
+
+.front h2{
+  font-weight: 500;
+  margin-bottom: 5px; 
+  margin-top: 0; 
+  background: rgba(0, 0, 0, 0.5) ;
+}
+
+.front p {
+  color: #ccc;
+  font-size: 13px;
+  margin: 0 0 5px 0; 
+  background: rgba(0, 0, 0, 0.5) ;
+}
+
+.front button {
+  width: 120px;
+  border: 1px solid #fff;
+  background: transparent;
+  border-radius: 50px;
+  padding: 6px 20px;
+  cursor: pointer;
+  margin-top: 10px; 
+  margin-bottom: 0; 
+  color: black;
+  background-color: white;
+}
+
+.back {
+  background: white;
+  color: #333;
+  padding: 20px 40px;
+  transform: rotateY(180deg);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.2; /* Reduce line height for tighter text spacing */
+}
+
+.back h1 {
+  font-size: 40px; /* Slightly smaller font size */
+  line-height: 45px;
+  margin-bottom: 5px; /* Reduced from 10px */
+}
+
+.back p {
+  font-size: 14px;
+  margin: 3px 0; /* Reduced margins between paragraphs */
+}
+
+/* Fix the image selector and dimensions */
+.back img {
+  max-width: 50px;
+  max-height: 50px; 
+  object-fit: cover; 
+  margin: 5px auto; 
+  display: block; 
+}
+
+.back button {
+  background: #7800ad;
+  color: #fff;
+  border: 0;
+  outline: 0;
+  padding: 8px 25px;
+  border-radius: 30px;
+  font-size: 14px;
+  margin-right: 15px;
+  margin-top: 10px; 
+  box-shadow: 0 8px 10px rgba(120,0,173,0.5);
 }
