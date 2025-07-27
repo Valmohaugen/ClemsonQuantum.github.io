@@ -250,9 +250,8 @@ nav {
 
 .event-cards-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  grid-template-rows: repeat(2, auto); 
-  gap: 40px;
+  grid-template-columns: 1fr; 
+  gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -276,7 +275,7 @@ nav {
 }
 
 .front, .back {
-  width: 90%;
+  width: 100%;
   height: 100%;
   border-radius: 15px;
   position: absolute;
@@ -302,12 +301,15 @@ nav {
   margin-bottom: 5px; 
   margin-top: 0;
   font-size: clamp(0.9rem, 2.2vw, 1.6rem); /* Slightly smaller responsive font size */
+  background-color: hsla(0, 0%, 0%, 0.5);
+  
 }
 
 .front p {
   color: #ccc;
   font-size: 13px;
   margin: 0 0 5px 0; 
+  background-color: hsla(0, 0%, 0%, 0.5);
 }
 
 .front button {
@@ -778,7 +780,12 @@ section p {
       .nav .nav-bubble {
         display: none !important;
       }
-
+      
+            .event-cards-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on larger screens */
+        grid-template-rows: repeat(2, auto);
+        gap: 40px;
+      }
       .nav .nav-links {
         display: flex !important;
         flex-direction: row;
@@ -933,12 +940,13 @@ section p {
       }
     }
 
+      
     /* Very small screens but still horizontal navigation */
     @media (min-width: 400px) and (max-width: 479px) {
       .nav .nav-bubble {
         display: none !important;
       }
-
+      
       .nav .nav-links {
         display: flex !important;
         flex-direction: row;
@@ -1244,7 +1252,7 @@ section p {
       scrollbar-width: none;
       display: flex; /* Single row layout */
       gap: 20px; /* Space between items */
-      padding: 10px 0; /* Add padding for hover scaling */
+      padding: 20px 0; /* Add padding for hover scaling */
     }
 
     .gallery::-webkit-scrollbar {
