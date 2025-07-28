@@ -282,6 +282,7 @@ nav {
   backface-visibility: hidden;
   top: 0;
   left: 0; /* Ensure both sides are at the same position */
+  background-color: #FFFBF1;
 }
 
 .front{
@@ -361,6 +362,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   line-height: 1.2; /* Reduce line height for tighter text spacing */
+  background-color: #FFFBF1;
 }
 
 .back h1 {
@@ -492,6 +494,7 @@ nav {
     justify-content: center;
     padding: clamp(1rem, 3vw, 2rem) clamp(0.5rem, 1.5vw, 1rem); /* Responsive padding */
     color: #fff;
+    background-color: #FFFBF1;
   }
 
   .front h2,
@@ -526,6 +529,7 @@ nav {
 
   .back {
     transform: rotateY(180deg);
+    background-color: #FFFBF1;
   }
 
   .card button {
@@ -581,6 +585,7 @@ nav {
     color: #3a185c;
     z-index: 2;
     background: none;
+    background-color: #FFFBF1;
   }
 
   .front img,
@@ -664,6 +669,7 @@ nav {
     justify-content: center;
     padding: 2rem 1rem;
     color: #3a185c;
+    background-color: #FFFBF1;
   }
 
   .front h2,
@@ -1343,6 +1349,7 @@ section p {
   justify-content: center;
   padding: clamp(1rem, 2vw, 2rem) clamp(0.5rem, 1vw, 1rem); /* Responsive padding */
   color: #3a185c;
+  background-color: #FFFBF1;
 }
 
 .people-card .back {
@@ -1363,6 +1370,7 @@ section p {
   color: #3a185c;
   z-index: 2;
   background: none;
+  background-color: #FFFBF1;
 }
 
 .people-card .front img,
@@ -1373,6 +1381,7 @@ section p {
   object-fit: cover;
   margin-bottom: clamp(0.5rem, 1vw, 1rem); /* Responsive margin */
   background: #fff;
+  background-color: #FFFBF1;
 }
 
 .people-card .front p,
@@ -1383,6 +1392,7 @@ section p {
   text-align: center;
   padding: 0 clamp(0.3rem, 1.5vw, 1rem); /* More responsive horizontal padding */
   color: #3a185c;
+  background-color: #FFFBF1;
 }
 
 .people-card button {
