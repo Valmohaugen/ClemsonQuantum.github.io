@@ -1,0 +1,13 @@
+title: "Clemson Quantum"
+description: "Clemson Quantum Club Website"
+url: "https://clemsonquantum.github.io"
+baseurl: ""  # no subpath since you are using username.github.io
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Include assets folder
+include:
+  - assets
+  - images

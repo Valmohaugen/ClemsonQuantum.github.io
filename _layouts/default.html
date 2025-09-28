@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | escape }} | {{ site.title }}</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search">
+
+  <!-- Favicon -->
+  <link rel="icon" href="{{ '/images/favicon.ico' | relative_url }}" type="image/x-icon">
+
+  {% seo %}
+</head>
+<body>
+  {% include header.html %}
+  <main>
+    {{ content }}
+  </main>
+  <!---{% include footer.html %}--->
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>
