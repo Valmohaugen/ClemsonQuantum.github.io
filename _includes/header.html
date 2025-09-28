@@ -1,0 +1,52 @@
+<div class="nav">
+  <button class="nav-bubble" id="navBubble" aria-label="Open navigation">
+    <span>&#9776;</span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="{{ '/' | relative_url }}">
+      <img src="{{ '/images/logo.png' | relative_url }}" height="40" style="vertical-align: middle;">
+    </a>
+    <a href="{{ '/news.html' | relative_url }}">News</a>
+
+    <div class="dropdown">
+      <a href="{{ '/events.html' | relative_url }}" class="dropdown-btn">Events</a>
+      <div class="dropdown-content">
+        <a href="{{ '/events/upcoming-events.html' | relative_url }}">Upcoming Events</a>
+
+        <div class="dropdown-submenu">
+          <a href="{{ '/events/hackathons.html' | relative_url }}" class="dropdown-btn">Hackathons</a>
+          <div class="dropdown-content">
+            <a href="{{ '/events/hackathons/2026-Clemson-Hackathon.html' | relative_url }}">Clemson Hackathon 2026</a>
+            <a href="{{ '/events/hackathons/2025-SC-Quantathon-v2.html' | relative_url }}">SC Quantathon v2 2025</a>
+            <a href="{{ '/events/hackathons/2025-NYUAD.html' | relative_url }}">NYUAD 2025</a>
+            <a href="{{ '/events/hackathons/2025-Y-Quantum.html' | relative_url }}">Y Quantum 2025</a>
+            <a href="{{ '/events/hackathons/2025-iQuHack.html' | relative_url }}">iQuHack 2025</a>
+            <a href="{{ '/events/hackathons/2024-SC-Quantathon-v1.html' | relative_url }}">SC Quantathon v1 2024</a>
+          </div>
+        </div>
+
+        <a href="{{ '/events/workshops-and-seminars.html' | relative_url }}">Workshops & Seminars</a>
+        <a href="{{ '/events.html' | relative_url }}">All Events</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <a href="{{ '/resources.html' | relative_url }}" class="dropdown-btn">Resources</a>
+      <div class="dropdown-content">
+        <a href="{{ '/resources/student-work-and-projects.html' | relative_url }}">Student Work & Projects</a>
+        <a href="{{ '/resources/learning-resources.html' | relative_url }}">Learning Resources</a>
+        <a href="{{ '/resources/internships.html' | relative_url }}">Internships</a>
+        <a href="{{ '/resources.html' | relative_url }}">All Resources</a>
+      </div>
+    </div>
+
+    <a href="{{ '/get-involved.html' | relative_url }}">Get Involved</a>
+
+    <form>
+      <div class="search">
+        <span class="material-symbols-outlined">search</span>
+        <input class="search-input" type="search" placeholder="Search">
+      </div>
+    </form>
+  </div>
+</div>

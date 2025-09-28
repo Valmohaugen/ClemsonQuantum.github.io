@@ -1,0 +1,1456 @@
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+  margin: 30px;
+}
+header a {
+  margin: 0 0px; 
+  text-decoration: none;
+  color: #333; 
+  padding: 0px
+  
+}
+header, footer {
+  padding: 10px 20px;
+
+  text-align: center;
+}
+footer {
+  background: black;
+  color:white;
+  margin-top: 40px;
+  padding: 20px 0;
+  font-size: 0.9em;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-bottom: -40px; /* Match the body padding */
+  text-align: center;
+}
+
+/* Navigation bar styles */
+nav {
+  position: relative;
+  display: inline-block;
+}
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  gap: 50px;
+  background-color: black;
+  z-index: 1000; /* Add a high z-index to ensure navbar stays on top */
+}
+.nav button {
+  background-color: white;
+  color: hsl(0, 95%, 40%);
+  padding: 0px 0px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+.nav a {
+  text-decoration: none;
+  text-align: center;
+  padding: 8px 16px;
+  display: block;
+  color: white;
+}
+.nav-tab:hover {
+  background-color: #e9ecef;
+}
+.navbar a:hover {
+  background-color: hsl(36, 90%, 10%);
+}
+.navbar li {
+  flex: 1; /* Changed from float: left to flex */
+  text-align: center;
+
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  
+}
+.dropdown button {
+  color: hsl(0, 95%, 40%);
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+.dropdown a {
+  display: block;
+  color: black; 
+  text-decoration: none;
+  padding: 0px 15px;
+}
+
+/* Specific style for main navigation dropdown buttons to keep them white */
+.nav > .dropdown > a.dropdown-btn {
+  color: white; 
+}
+
+/* Specific style for dropdown content links to be black */
+.dropdown .dropdown-content a {
+  color: black; 
+}
+
+.dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: hsl(0, 0%, 95%);
+  box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.8);
+  min-width: 220px;
+  padding: 16px 0px;
+}
+.dropdown:hover > .dropdown-content {
+  display: block;
+}
+.dropdown:hover button {
+  background-color: hsl(0, 0%, 70%);
+}
+.dropdown a:hover {
+  color:   hsl(0, 0%, 90%);
+}
+
+/* Sub-dropdown styles */
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu .dropdown-content {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background-color: beige;
+  min-width: 0px;
+  box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.8);
+}
+.dropdown-submenu:hover > .dropdown-content {
+  display: block;
+}
+
+/* Search bar styles */
+.search {
+  --padding: 14px;
+
+  width: max-content;
+  display: flex;
+  align-items: center;
+  padding: var(--padding);
+  border-radius: 28px;
+  background: #f6f6f6;
+  width: 250px;
+  transition: box-shadow 0.1s;
+}
+.search:focus-within {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.75)
+}
+.search-input {
+  font-size: 16px;
+  font-family: "Lexend", sans-serif;
+  color: #333333;
+  margin-left: var(--padding);
+  outline: none;
+  border: none;
+  background: transparent;
+  flex: 1;
+}
+.search-input::placeholder,
+.search-icon {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.gallery{
+  width:1200px;
+  display:flex;
+  overflow-x: scroll;
+  
+}
+
+.gallery div {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 20px;
+  padding: 10px;
+  flex: none;
+}
+
+.gallery div img{
+  width:100%;
+  filter: grayscale(100%);
+  transition: transform 0.5s;
+
+  height: 400px;
+  object-fit: cover;
+
+}
+
+.gallery::-webkit-scrollbar{
+  display: none;
+}
+
+.gallery-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 00% auto;
+}
+
+#backBtn, #nextBtn {
+  width: 50px;
+  cursor: pointer;
+  margin: 40px;
+}
+
+.gallery div img:hover{
+  filter: grayscale(0);
+  cursor: zoom-in;
+  transform: scale(1.1);
+  border-radius: 10px; /* Maintain rounded corners on hover */
+}
+
+.img-overlay {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.img-overlay.active {
+  display: flex;
+}
+
+.img-overlay-pic {
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 0 20px #000;
+}
+
+.event-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Adjust individual card styling for grid */
+.event-card {
+  width: 100%;
+  aspect-ratio: 1;
+  margin: 0;
+  background: transparent;
+  perspective: 1000px;
+}
+
+.event-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.front, .back {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  position: absolute;
+  backface-visibility: hidden;
+  top: 0;
+  left: 0; /* Ensure both sides are at the same position */
+  background-color: #FFFBF1;
+}
+
+.front{
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  padding: 20px 20px 20px 20px;
+}
+
+.front h2{
+  font-weight: 500;
+  margin-bottom: 5px; 
+  margin-top: 0;
+  font-size: clamp(0.9rem, 2.2vw, 1.6rem); /* Slightly smaller responsive font size */
+  background-color: hsla(0, 0%, 0%, 0.5);
+  
+}
+
+.front p {
+  color: #ccc;
+  font-size: 13px;
+  margin: 0 0 5px 0; 
+  background-color: hsla(0, 0%, 0%, 0.5);
+}
+
+.front button {
+  width: 120px;
+  border: none; /* Remove border */
+  background: rgba(255, 255, 255, 0.4); /* More transparent white background */
+  border-radius: 50px;
+  padding: 6px 20px;
+  cursor: pointer;
+  margin: 10px auto 0 auto; /* Center the button horizontally and add top margin */
+  color: black;
+  font-weight: 600; /* Make text a bit bolder */
+  font-size: clamp(0.75rem, 2vw, 1rem); /* Responsive font size for button text */
+  backdrop-filter: blur(4px); /* Add subtle blur effect for better aesthetics */
+  transition: background 0.3s ease; /* Smooth transition effect */
+}
+
+.front button:hover {
+  background: rgba(255, 255, 255, 0.7); /* Moderately more opaque on hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Special styling for the TBD/All Events card to center the title */
+.event-card:last-child .front {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.event-card:last-child .front h2 {
+  margin: 0;
+}
+
+.event-card:last-child .front p {
+  margin: 5px 0;
+}
+
+.event-card:last-child .front button {
+  margin-top: 15px;
+}
+
+.back {
+  background: white;
+  color: #333;
+  padding: 20px 40px;
+  transform: rotateY(180deg);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.2; /* Reduce line height for tighter text spacing */
+  background-color: #FFFBF1;
+}
+
+.back h1 {
+  font-size: 40px; /* Slightly smaller font size */
+  line-height: 45px;
+  margin-bottom: 15px; /* Increased from 5px */
+}
+
+.back p {
+  font-size: 14px;
+  margin: 8px 0; /* Increased from 3px to 8px for better spacing */
+  line-height: 1.4; /* Slightly increased line height for better readability */
+}
+
+/* Fix the image selector and dimensions */
+.back img {
+  max-width: 50px;
+  max-height: 50px; 
+  object-fit: cover; 
+  margin: 5px auto; 
+  display: block; 
+}
+
+.back button {
+  background: #7800ad;
+  color: #fff;
+  border: 2px solid #fff; /* Add a white border around the button */
+  outline: 0;
+  padding: 8px 25px;
+  border-radius: 30px;
+  font-size: 14px;
+  margin-right: 15px;
+  margin-top: 10px; 
+  box-shadow: 0 8px 10px rgba(120,0,173,0.5);
+}
+
+/* Media Stuff (Val Added) */
+.organizer-row {
+  display: flex;
+  align-items: center;
+  padding: 24px 32px;
+  width: 600px;
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+.organizer-description {
+  font-size: clamp(0.6rem, 2vw, 1rem) !important; /* More aggressive responsive scaling like nav bar */
+}
+
+.organizer-row h2 {
+  font-size: clamp(1rem, 2.8vw, 1.8rem) !important; /* Aggressive responsive scaling like nav bar */
+  margin: 0 0 10px 0 !important;
+  color: #3a185c !important;
+}
+
+.organizer-row h2 span {
+  font-weight: normal !important;
+}
+
+.organizer-row p {
+  font-size: clamp(0.8rem, 2.2vw, 1.1rem) !important; /* Aggressive responsive scaling like nav bar */
+  margin: 0 0 6px 0 !important;
+  color: #3a185c !important;
+}
+
+ 
+
+@media (max-width: 500px) {
+  .organizer-row {
+    display: none;
+  }
+
+  /* Show people cards and grid only on mobile screens */
+  .people-card {
+    display: block;
+    width: 95vw;
+    max-width: 400px;
+    height: 420px;
+    perspective: 1000px;
+    margin: 0 auto 3rem auto;
+    background: none;
+    box-shadow: none;
+  }
+
+  .people-cards-grid {
+    display: block; /* Show the grid on mobile */
+    margin: 0 auto;
+  }
+
+  .card {
+    display: block;
+    width: 320px;
+    height: 400px;
+    perspective: 1000px;
+    margin: 0 auto 3rem auto;
+    background: none;
+    box-shadow: none;
+  }
+
+  .organizer-cards {
+    gap: 3rem;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .front,
+  .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 3vw, 2rem) clamp(0.5rem, 1.5vw, 1rem); /* Responsive padding */
+    color: #fff;
+    background-color: #FFFBF1;
+  }
+
+  .front h2,
+  .back h2 {
+    position: absolute;
+    top: clamp(0.8rem, 3vw, 1.2rem); /* Responsive top position */
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    width: 90%;
+    text-align: center;
+    font-size: clamp(1.1rem, 4vw, 1.5rem); /* Responsive font size */
+    font-weight: bold;
+    color: #fff;
+    z-index: 2;
+    background: none;
+  }
+
+  .back h2 {
+    z-index: 2;
+  }
+
+  .front img,
+  .back img {
+    width: clamp(80px, 15vw, 120px); /* Responsive image size */
+    height: clamp(80px, 15vw, 120px);
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: clamp(0.5rem, 1.5vw, 1rem); /* Responsive margin */
+    background: #fff;
+  }
+
+  .back {
+    transform: rotateY(180deg);
+    background-color: #FFFBF1;
+  }
+
+  .card button {
+    margin-top: clamp(0.5rem, 1.5vw, 1rem); /* Responsive margin */
+    padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.8rem, 2vw, 1.2rem); /* Responsive padding */
+    border-radius: 8px;
+    border: none;
+    background: #3a185c;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: clamp(0.8rem, 2vw, 1rem); /* Responsive font size */
+  }
+
+  /* Fix for event card front h2 background on mobile */
+  .event-card .front h2 {
+    width: auto; 
+    padding: 5px 10px; 
+    border-radius: 4px; 
+    margin-bottom: 50px; 
+    margin-top: 0;
+    position: relative; 
+    transform: none; 
+    left: auto; 
+  }
+  
+  /* Front paragraphs in event cards should also have backgrounds */
+  .event-card .front p {
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin: 0 0 10px 0; /* Increased bottom margin */
+  }
+
+  /* Add more spacing between paragraphs in the back */
+  .event-card .back p {
+    margin: 10px 0; /* More space between paragraphs */
+  }
+
+  /* Make sure normal cards and people cards maintain proper styling */
+  .people-card .front h2,
+  .people-card .back h2,
+  .card .front h2,
+  .card .back h2 {
+    position: absolute;
+    top: clamp(0.8rem, 3vw, 1.2rem); /* Responsive top position */
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    width: 90%;
+    text-align: center;
+    font-size: clamp(1.1rem, 4vw, 1.5rem); /* Responsive font size */
+    font-weight: bold;
+    color: #3a185c;
+    z-index: 2;
+    background: none;
+    background-color: #FFFBF1;
+  }
+
+  .front img,
+  .back img {
+    width: clamp(80px, 20vw, 120px); /* Responsive image size for mobile */
+    height: clamp(80px, 20vw, 120px);
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+    background: #fff;
+  }
+
+  .card button {
+    margin-top: clamp(0.5rem, 2vw, 1rem);
+    padding: clamp(0.3rem, 1.5vw, 0.5rem) clamp(0.8rem, 3vw, 1.2rem);
+    border-radius: 8px;
+    border: none;
+    background: #3a185c;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: clamp(0.8rem, 2.5vw, 1rem); /* Responsive font size */
+  }
+
+  /* Change event cards to single column on mobile */
+  .event-cards-grid {
+    grid-template-columns: 1fr; /* Single column layout */
+    gap: 30px; /* Slightly reduced gap for mobile */
+  }
+  
+  /* Maintain square aspect ratio for mobile */
+  .event-card {
+    aspect-ratio: 1; /* Keep square shape on mobile */
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .organizer-row {
+    display: none;
+  }
+
+  .card {
+    display: block;
+    width: 320px;
+    height: 400px;
+    perspective: 1000px;
+    margin: 0 auto 3rem auto;
+    background: none;
+    box-shadow: none;
+  }
+
+  .organizer-cards {
+    gap: 3rem;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .front,
+  .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    color: #3a185c;
+    background-color: #FFFBF1;
+  }
+
+  .front h2,
+  .back h2 {
+    position: absolute;
+    top: 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    width: 90%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3a185c;
+    z-index: 2;
+    background: none;
+  }
+
+  .back h2 {
+    z-index: 2;
+  }
+
+  .front img,
+  .back img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    background: #fff;
+  }
+
+  .back {
+    transform: rotateY(180deg);
+  }
+
+  .card button {
+    margin-top: 1rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    border: none;
+    background: #3a185c;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+
+/* Remove background and box for the About section */
+
+section {
+  max-width: 700px;
+  margin: 32px auto 0 auto;
+  padding: 2rem 2rem 1.5rem 2rem;
+}
+
+section h2 {
+  color: #3a185c;
+  text-align: center;
+  margin-top: 0;
+}
+
+section p {
+  color: #3a185c;
+  font-size: 1.15rem;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* NEW STYLE STUFF!!!
+    /* Reset to ensure full width */
+    * {
+      margin: 0;
+      padding: 0; 
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: #f8f4ec;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navigation - ensure full width */
+    .nav {
+      background: transparent !important;
+      box-shadow: none !important;
+      position: static; /* <-- Change from fixed to static */
+      width: 100vw;
+      z-index: 2000;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .nav,
+    .nav a,
+    .nav .dropdown-btn {
+      color: #3a185c !important;
+    }
+
+    .nav a:visited,
+    .nav a:active {
+      color: #3a185c !important;
+    }
+
+    /* Large Desktop navigation */
+    @media (min-width: 1024px) {
+      .nav .nav-bubble {
+        display: none !important;
+      }
+      
+            .event-cards-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on larger screens */
+        grid-template-rows: repeat(2, auto);
+        gap: 40px;
+      }
+      .nav .nav-links {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        background: transparent;
+        box-shadow: none;
+        width: 100%;
+        padding: 1rem 2rem;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 2rem;
+      }
+
+      .nav .nav-links a,
+      .nav .nav-links .dropdown-btn {
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        transition: opacity 0.3s;
+        font-size: clamp(1rem, 1.8vw, 1.1rem); /* Responsive font size */
+        white-space: nowrap; /* Prevent line break */
+        flex-shrink: 0; /* Prevent shrinking */
+      }
+
+      .search {
+        width: clamp(200px, 20vw, 250px); /* Responsive width */
+        padding: 0.5rem 1rem;
+      }
+
+      .search-input {
+        font-size: clamp(14px, 1.6vw, 16px); /* Responsive font size */
+        padding: 0 0.5rem;
+      }
+    }
+
+    /* Medium Desktop navigation (tablets in landscape) */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .nav .nav-bubble {
+        display: none !important;
+      }
+
+      .nav .nav-links {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        background: transparent;
+        box-shadow: none;
+        width: 100%;
+        padding: 0.75rem 1.5rem;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: clamp(1rem, 2vw, 1.5rem); /* Responsive gap */
+      }
+
+      .nav .nav-links a,
+      .nav .nav-links .dropdown-btn {
+        text-decoration: none;
+        padding: 0.4rem 0.8rem;
+        transition: opacity 0.3s;
+        font-size: clamp(0.85rem, 1.5vw, 1rem); /* Responsive font size */
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .search {
+        width: clamp(160px, 18vw, 200px); /* Responsive width */
+        padding: 0.4rem 0.8rem;
+      }
+
+      .search-input {
+        font-size: clamp(12px, 1.4vw, 14px); /* Responsive font size */
+        padding: 0 0.4rem;
+      }
+    }
+
+    /* Small Tablet navigation */
+    @media (min-width: 600px) and (max-width: 767px) {
+      .nav .nav-bubble {
+        display: none !important;
+      }
+
+      .nav .nav-links {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        background: transparent;
+        box-shadow: none;
+        width: 100%;
+        padding: 0.5rem 1rem;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: clamp(0.5rem, 1.5vw, 1rem); /* Responsive gap */
+      }
+
+      .nav .nav-links a,
+      .nav .nav-links .dropdown-btn {
+        text-decoration: none;
+        padding: 0.3rem 0.6rem;
+        transition: opacity 0.3s;
+        font-size: clamp(0.75rem, 1.3vw, 0.9rem); /* Responsive font size */
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .search {
+        width: clamp(120px, 16vw, 160px); /* Responsive width */
+        padding: 0.3rem 0.6rem;
+      }
+
+      .search-input {
+        font-size: clamp(11px, 1.2vw, 13px); /* Responsive font size */
+        padding: 0 0.3rem;
+      }
+    }
+
+    /* Large Mobile navigation (still horizontal but more compact) */
+    @media (min-width: 480px) and (max-width: 599px) {
+      .nav .nav-bubble {
+        display: none !important;
+      }
+
+      .nav .nav-links {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        background: transparent;
+        box-shadow: none;
+        width: 100%;
+        padding: 0.5rem 0.5rem;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: clamp(0.2rem, 1vw, 0.3rem); /* Responsive gap */
+      }
+
+      .nav .nav-links a,
+      .nav .nav-links .dropdown-btn {
+        text-decoration: none;
+        padding: 0.2rem 0.3rem; /* Reduced padding */
+        transition: opacity 0.3s;
+        font-size: clamp(0.65rem, 1.1vw, 0.75rem); /* Responsive font size */
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .search {
+        width: clamp(100px, 14vw, 120px); /* Responsive width */
+        padding: 0.2rem 0.4rem;
+      }
+
+      .search-input {
+        font-size: clamp(10px, 1vw, 12px); /* Responsive font size */
+        padding: 0 0.2rem;
+      }
+    }
+
+      
+    /* Very small screens but still horizontal navigation */
+    @media (min-width: 400px) and (max-width: 479px) {
+      .nav .nav-bubble {
+        display: none !important;
+      }
+      
+      .nav .nav-links {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        background: transparent;
+        box-shadow: none;
+        width: 100%;
+        padding: 0.3rem 0.3rem;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: clamp(0.1rem, 0.8vw, 0.2rem); /* Responsive gap */
+        line-height: 1.2;
+      }
+
+      .nav .nav-links a,
+      .nav .nav-links .dropdown-btn {
+        text-decoration: none;
+        padding: 0.15rem 0.25rem; /* Minimal padding */
+        transition: opacity 0.3s;
+        font-size: clamp(0.6rem, 0.9vw, 0.7rem); /* Responsive font size */
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .search {
+        width: clamp(80px, 12vw, 100px); /* Responsive width */
+        padding: 0.15rem 0.3rem;
+      }
+
+      .search-input {
+        font-size: clamp(9px, 0.8vw, 11px); /* Responsive font size */
+        padding: 0 0.15rem;
+      }
+
+      /* Hide dropdown arrows and reduce dropdown sizes for very small screens */
+      .dropdown-submenu .dropdown-btn:after {
+        font-size: clamp(0.5rem, 0.7vw, 0.6rem); /* Responsive arrow size */
+      }
+      
+      .dropdown-content {
+        min-width: 150px !important;
+      }
+    }
+
+    /* Shared styles for all desktop/tablet sizes */
+    @media (min-width: 400px) {
+      .nav .nav-links a:hover,
+      .nav .nav-links .dropdown-btn:hover {
+        opacity: 0.7;
+      }
+
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background: #fff;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        min-width: 200px;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown-content a {
+        display: block;
+        padding: 0.75rem 1rem;
+        color: #3a185c !important;
+        text-decoration: none;
+        transition: background 0.3s;
+      }
+
+      .dropdown-content a:hover {
+        background: #f0f0f0;
+      }
+
+      .dropdown-submenu {
+        position: relative;
+      }
+
+      .dropdown-submenu .dropdown-content {
+        display: none;
+        position: absolute;
+        left: 100%;
+        top: 0;
+        background: #fff;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        min-width: 250px; /* Make it slightly wider for longer hackathon names */
+        z-index: 1001;
+      }
+
+      .dropdown-submenu:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown-submenu .dropdown-content a {
+        display: block;
+        padding: 0.75rem 1rem;
+        color: #3a185c !important;
+        text-decoration: none;
+        transition: background 0.3s;
+      }
+
+      .dropdown-submenu .dropdown-content a:hover {
+        background: #f0f0f0;
+      }
+
+      .dropdown-submenu .dropdown-btn {
+        position: relative;
+      }
+
+      .dropdown-submenu .dropdown-btn:after {
+        content: "▶";
+        position: absolute;
+        right: 1rem;
+        font-size: 0.8rem;
+        color: #3a185c;
+      }
+
+      /* Search bar shared styles */
+      .search {
+        display: flex;
+        align-items: center;
+        background: transparent !important; /* Make search bar background transparent */
+        border-radius: 20px;
+        box-shadow: none !important; /* Remove box shadow if present */
+        flex-shrink: 1; /* Allow search bar to shrink */
+        min-width: 80px; /* Minimum width to prevent it from becoming too small */
+      }
+
+      .search-input {
+        border: none;
+        outline: none;
+        background: transparent;
+        flex: 1;
+        min-width: 0; /* Allow input to shrink */
+      }
+    }
+
+    /* Mobile navigation */
+    @media (max-width: 399px) {
+      .nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        transition: top 0.3s;
+      }
+
+      .nav .nav-bubble {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 2px 12px rgba(58, 24, 92, 0.12);
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        z-index: 1001;
+        border: 2px solid #3a185c;
+        cursor: pointer;
+        transition: box-shadow 0.2s;
+      }
+
+      .nav .nav-bubble span {
+        font-size: 2.2rem;
+        color: #3a185c;
+        margin: auto;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .nav .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: fixed;
+        top: 80px;
+        right: 16px;
+        width: 85vw;
+        max-width: 320px;
+        box-shadow: 0 8px 32px rgba(58, 24, 92, 0.18);
+        border-radius: 18px;
+        z-index: 1002;
+        padding: 1.5rem 1rem 1rem 1rem;
+        animation: navBubbleFadeIn 0.2s;
+      }
+
+      .nav .nav-links.show {
+        display: flex;
+      }
+
+      .nav .nav-links a,
+      .nav .nav-links .dropdown-btn {
+        color: #3a185c !important;
+        padding: 1rem 0.5rem;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        font-size: 1.1rem;
+        text-decoration: none;
+      }
+
+      .nav .nav-links .dropdown-content,
+      .nav .nav-links .dropdown-submenu .dropdown-content {
+        position: static;
+        box-shadow: none;
+        background: none;
+        display: block;
+        border-radius: 0;
+        padding-left: 1rem;
+      }
+
+      .nav .nav-links .dropdown-content a {
+        padding: 0.5rem 0;
+        border: none;
+      }
+
+      .nav .nav-links .dropdown-submenu .dropdown-btn {
+        font-weight: bold;
+        padding-left: 0;
+      }
+
+      .nav>div,
+      .nav>form {
+        display: none;
+      }
+
+      @keyframes navBubbleFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+
+    /* Main content */
+    main {
+      padding-top: 32px;
+      margin-bottom: 0; /* Remove any default margin */
+    }
+
+    h1 {
+      font-family: Garamond;
+      font-size: 48px;
+      text-align: center;
+      color: #3a185c;
+      text-shadow: 2px 2px 12px rgb(255, 255, 255);
+      padding: 0 1rem;
+      margin-bottom: 12px; /* Reduce space below the heading */
+    }
+
+    /* About section */
+    section {
+      max-width: 700px;
+      margin: 0 auto 0 auto; /* Remove top margin */
+      padding: 2rem 2rem 1.5rem 2rem;
+    }
+
+    section h2 {
+      color: #3a185c;
+      text-align: center;
+      margin-top: 0;
+    }
+
+    section p {
+      color: #3a185c;
+      font-size: 1.15rem;
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    /* Gallery */
+    .gallery-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 3rem auto;
+      max-width: 1200px;
+    }
+
+    .gallery {
+      width: 900px;
+      max-width: calc(100vw - 120px);
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      display: flex; /* Single row layout */
+      gap: 20px; /* Space between items */
+      padding: 20px 0; /* Add padding for hover scaling */
+    }
+
+    .gallery::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery span {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0; /* Prevent shrinking */
+    }
+
+    .gallery img {
+      width: 280px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.15); /* Larger scaling on hover */
+      z-index: 10;
+      position: relative;
+      border-radius: 10px; /* Maintain rounded corners on hover */
+    }
+
+    .gallery-caption {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: #3a185c;
+      text-align: center;
+      font-weight: 500;
+      max-width: 280px;
+      line-height: 1.3;
+    }
+
+    #backBtn, #nextBtn {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      margin: 0 10px;
+    }
+
+
+
+    /* People card styles - explicitly hidden by default for all screen sizes */
+.people-card {
+  display: none; /* Hide by default on all screens */
+  width: clamp(280px, 25vw, 320px); /* Responsive width */
+  height: clamp(350px, 30vw, 400px); /* Responsive height */
+  perspective: 1000px;
+  margin: 0 auto 3rem auto;
+  background: none;
+  box-shadow: none;
+}
+
+.people-cards-grid {
+  display: none; /* Hide the entire grid container by default */
+}
+
+.people-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.people-card.flipped .people-card-inner {
+  transform: rotateY(180deg);
+}
+
+.people-card .front,
+.people-card .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 2vw, 2rem) clamp(0.5rem, 1vw, 1rem); /* Responsive padding */
+  color: #3a185c;
+  background-color: #FFFBF1;
+}
+
+.people-card .back {
+  transform: rotateY(180deg);
+}
+
+.people-card .front h2,
+.people-card .back h2 {
+  position: absolute;
+  top: clamp(0.5rem, 2vw, 1.2rem); /* More responsive top position */
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  width: 90%;
+  text-align: center;
+  font-size: clamp(0.9rem, 2.5vw, 1.6rem); /* More aggressive scaling like nav bar */
+  font-weight: bold;
+  color: #3a185c;
+  z-index: 2;
+  background: none;
+  background-color: #FFFBF1;
+}
+
+.people-card .front img,
+.people-card .back img {
+  width: clamp(80px, 12vw, 120px); /* Responsive image width */
+  height: clamp(80px, 12vw, 120px); /* Responsive image height */
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: clamp(0.5rem, 1vw, 1rem); /* Responsive margin */
+  background: #fff;
+  background-color: #FFFBF1;
+}
+
+.people-card .front p,
+.people-card .back p {
+  font-size: clamp(0.6rem, 1.8vw, 1rem); /* More aggressive responsive scaling like nav bar */
+  line-height: 1.4;
+  margin: clamp(0.2rem, 0.8vw, 0.5rem) 0; /* More responsive margin */
+  text-align: center;
+  padding: 0 clamp(0.3rem, 1.5vw, 1rem); /* More responsive horizontal padding */
+  color: #3a185c;
+  background-color: #FFFBF1;
+}
+
+.people-card button {
+  margin-top: clamp(0.3rem, 1.5vw, 1rem); /* More responsive margin */
+  padding: clamp(0.2rem, 1.2vw, 0.5rem) clamp(0.6rem, 2vw, 1.2rem); /* More responsive padding */
+  border-radius: 8px;
+  border: none;
+  background: #3a185c;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: clamp(0.7rem, 1.6vw, 1rem); /* More aggressive font scaling like nav bar */
+}
+
+
+/* Mobile card styles */
+@media (max-width: 500px) {
+  .organizer-row {
+    display: none;
+  }
+
+  /* Show people cards and grid only on mobile screens */
+  .people-card {
+    display: block;
+    width: clamp(280px, 95vw, 400px); /* Responsive width for mobile */
+    max-width: 400px;
+    height: clamp(350px, 80vw, 420px); /* Responsive height for mobile */
+  }
+
+  .people-cards-grid {
+    display: block; /* Show the grid on mobile */
+    margin: 0 auto;
+  }
+
+  /* Update card styles for mobile */
+  .card {
+    display: block;
+    width: clamp(280px, 90vw, 320px); /* Responsive width */
+    height: clamp(350px, 75vw, 400px); /* Responsive height */
+    perspective: 1000px;
+    margin: 0 auto 3rem auto;
+    background: none;
+    box-shadow: none;
+  }
+
+}
+
+
+.search {
+  position: relative; /* Add this for dropdown positioning */
+}
+
+.search-highlight {
+  background: yellow;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.search-results a:last-child {
+  border-bottom: none;
+}
