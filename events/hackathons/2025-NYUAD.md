@@ -1,6 +1,7 @@
 ---
 layout: default
 title: NYUAD 2025
+date: 2025-04-15 # inferred from filename prefix; adjust if needed
 ---
 
 <main>

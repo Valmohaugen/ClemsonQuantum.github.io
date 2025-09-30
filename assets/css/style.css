@@ -52,6 +52,47 @@ nav {
   background-color: black;
   z-index: 1000; /* Add a high z-index to ensure navbar stays on top */
 }
+.nav, .nav .nav-links {
+  overflow: visible !important;
+}
+
+.dropdown .dropdown-content,
+.dropdown-submenu .dropdown-content {
+  z-index: 99999 !important;
+}
+
+/* Floating submenu (cloned and appended to body) */
+.floating-submenu {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  padding: 8px;
+  max-height: 70vh;
+  overflow: auto;
+  min-width: 220px;
+}
+
+.floating-submenu a {
+  display: block;
+  padding: 8px 12px;
+  color: #222;
+  text-decoration: none;
+}
+
+.floating-submenu a:hover { background: #f6f7fb; }
+
+@media (max-width: 800px) {
+  .dropdown-submenu .dropdown-content {
+    left: 0 !important;
+    top: 100% !important;
+    box-shadow: none;
+  }
+  .dropdown .dropdown-content {
+    position: absolute;
+    left: 0;
+    top: 100%;
+  }
+}
 .nav button {
   background-color: white;
   color: hsl(0, 95%, 40%);
@@ -85,6 +126,17 @@ nav {
   display: inline-block;
   
 }
+
+/* Small invisible area to smooth mouse movement into dropdowns */
+.dropdown::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: -12px; /* extend slightly to the right */
+  top: 0;
+  bottom: -6px;
+  pointer-events: none;
+}
 .dropdown button {
   color: hsl(0, 95%, 40%);
   padding: 10px 15px;
@@ -110,15 +162,28 @@ nav {
 }
 
 .dropdown .dropdown-content {
-  display: none;
+  /* Keep dropdown elements in the flow but hidden by opacity + pointer-events to avoid "hover gaps" */
+  display: block; /* absolute so it doesn't affect layout */
   position: absolute;
-  background-color: hsl(0, 0%, 95%);
-  box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.8);
+  background-color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border-radius: 10px;
   min-width: 220px;
-  padding: 16px 0px;
+  padding: 8px;
+  transition: opacity 0.12s ease, transform 0.12s ease;
+  transform-origin: top left;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1500;
+  overflow: visible; /* allow nested submenus to extend outside */
 }
-.dropdown:hover > .dropdown-content {
-  display: block;
+
+/* Show dropdown when hovering or focusing the parent container */
+.dropdown:hover > .dropdown-content,
+.dropdown:focus-within > .dropdown-content,
+.dropdown .dropdown-content:hover {
+  opacity: 1;
+  pointer-events: auto;
 }
 .dropdown:hover button {
   background-color: hsl(0, 0%, 70%);
@@ -131,17 +196,77 @@ nav {
 .dropdown-submenu {
   position: relative;
 }
-.dropdown-submenu .dropdown-content {
-  display: none;
+
+.dropdown-submenu::after {
+  content: '';
   position: absolute;
-  left: 100%;
   top: 0;
-  background-color: beige;
-  min-width: 0px;
-  box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.8);
+  right: -12px;
+  width: 12px;
+  height: 100%;
 }
-.dropdown-submenu:hover > .dropdown-content {
+
+.dropdown-submenu .dropdown-content {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: 8px;
   display: block;
+  min-width: 240px;
+  padding: 0.75rem 0.75rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 18px 36px rgba(32, 19, 60, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  overflow: visible;
+  z-index: 2200;
+}
+
+.dropdown-submenu:hover > .dropdown-content,
+.dropdown-submenu:focus-within > .dropdown-content {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Dropdown link styles inside the card */
+.dropdown .dropdown-content a,
+.dropdown-submenu .dropdown-content a {
+  display: block;
+  padding: 8px 12px;
+  margin: 2px 0;
+  color: #222;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+}
+.dropdown .dropdown-content a.dropdown-heading,
+.dropdown-submenu .dropdown-content a.dropdown-heading {
+  font-weight: 600;
+  color: #0b1a2b;
+  padding-top: 10px;
+  padding-bottom: 6px;
+}
+.dropdown .dropdown-content a:hover,
+.dropdown-submenu .dropdown-content a:hover {
+  background: #f6f7fb;
+  color: #0a0a0a;
+}
+
+/* Limit height for very long dropdown lists */
+.dropdown .dropdown-content,
+.dropdown-submenu .dropdown-content {
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+/* Slight spacing for the top-level dropdown label */
+.nav > .dropdown > a.dropdown-btn {
+  padding: 8px 12px;
+  border-radius: 8px;
 }
 
 /* Search bar styles */
@@ -174,6 +299,58 @@ nav {
 .search-icon {
   color: rgba(0, 0, 0, 0.5);
 }
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  max-height: 320px;
+  overflow-y: auto;
+  z-index: 1200;
+}
+.search-results a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #3a185c;
+  text-decoration: none;
+  border-bottom: 1px solid #f0f0f0;
+}
+.search-results a:hover { background: #fafafa; }
+
+.search-item {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #111;
+  border-bottom: 1px solid #f0f0f0;
+}
+.search-item-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.search-item-sub {
+  font-size: 12px;
+  color: #6b6b6b;
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.search-empty {
+  padding: 10px 12px;
+  color: #666;
+  font-size: 13px;
+}
+
+.search-results { width: 320px; }
 
 .gallery{
   width:1200px;
@@ -1039,20 +1216,16 @@ section p {
       .dropdown-submenu {
         position: relative;
       }
-
       .dropdown-submenu .dropdown-content {
         display: none;
         position: absolute;
         left: 100%;
         top: 0;
-        background: #fff;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        min-width: 250px; /* Make it slightly wider for longer hackathon names */
-        z-index: 1001;
+        background-color: beige;
+        min-width: 0px;
+        box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.8);
       }
-
-      .dropdown-submenu:hover .dropdown-content {
+      .dropdown-submenu:hover > .dropdown-content {
         display: block;
       }
 
@@ -1073,11 +1246,7 @@ section p {
       }
 
       .dropdown-submenu .dropdown-btn:after {
-        content: "▶";
-        position: absolute;
-        right: 1rem;
-        font-size: 0.8rem;
-        color: #3a185c;
+        content: none;
       }
 
       /* Search bar shared styles */
@@ -1166,12 +1335,14 @@ section p {
         text-decoration: none;
       }
 
+      /* Keep dropdown contents hidden by default even inside the mobile nav slideout.
+         They should only become visible when the parent is hovered (or focused via keyboard). */
       .nav .nav-links .dropdown-content,
       .nav .nav-links .dropdown-submenu .dropdown-content {
         position: static;
         box-shadow: none;
         background: none;
-        display: block;
+        display: block; /* reveal nested links inside the mobile slideout */
         border-radius: 0;
         padding-left: 1rem;
       }
@@ -1453,4 +1624,129 @@ section p {
 
 .search-results a:last-child {
   border-bottom: none;
+}
+
+/* News cards */
+.news-cards {
+  width: 100vw;
+  margin: clamp(1.5rem, 4vw, 3rem) calc(-50vw + 50%);
+  padding: 0 clamp(1.5rem, 6vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+  box-sizing: border-box;
+}
+
+.news-card {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(243, 237, 250, 0.9), rgba(255, 255, 255, 0.95));
+  border-radius: 28px;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  box-shadow: 0 24px 60px rgba(58, 24, 92, 0.14);
+  border: 1px solid rgba(58, 24, 92, 0.1);
+  color: #3a185c;
+  backdrop-filter: blur(6px);
+}
+
+.news-card__layout {
+  display: grid;
+  grid-template-columns: 1fr 320px; /* content | image column (larger square) */
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.news-card__content {
+  max-width: 100%;
+  display: grid;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.news-card__meta {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(58, 24, 92, 0.7);
+  margin: 0;
+}
+
+.news-card__title {
+  margin: 0;
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  font-weight: 700;
+}
+
+.news-card__summary {
+  margin: 0;
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  line-height: 1.6;
+  color: rgba(33, 16, 52, 0.88);
+}
+
+.news-card__link {
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, #5e36a3, #9f6de0);
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-card__link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(95, 54, 163, 0.35);
+}
+
+.news-card__image img {
+  width: 100%;
+  height: auto;
+  max-height: 480px; /* allow taller images for larger thumbnails */
+  object-fit: cover;
+  border-radius: 18px;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* Make the image a square in the right column */
+.news-card__image {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%; /* square aspect ratio */
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.news-card__image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .news-cards {
+    padding: 0 clamp(1rem, 10vw, 2rem);
+  }
+
+  .news-card {
+    border-radius: 22px;
+  }
+  .news-card__layout {
+    grid-template-columns: 1fr;
+  }
+  .news-card__image {
+    padding-bottom: 62.5%; /* slightly taller mobile ratio so image appears bigger */
+    margin-top: 1rem;
+  }
 }

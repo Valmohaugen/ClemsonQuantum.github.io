@@ -11,21 +11,36 @@
     <div class="dropdown">
       <a href="{{ '/events.html' | relative_url }}" class="dropdown-btn">Events</a>
       <div class="dropdown-content">
-        <a href="{{ '/events/upcoming-events.html' | relative_url }}">Upcoming Events</a>
 
         <div class="dropdown-submenu">
           <a href="{{ '/events/hackathons.html' | relative_url }}" class="dropdown-btn">Hackathons</a>
           <div class="dropdown-content">
-            <a href="{{ '/events/hackathons/2026-Clemson-Hackathon.html' | relative_url }}">Clemson Hackathon 2026</a>
-            <a href="{{ '/events/hackathons/2025-SC-Quantathon-v2.html' | relative_url }}">SC Quantathon v2 2025</a>
-            <a href="{{ '/events/hackathons/2025-NYUAD.html' | relative_url }}">NYUAD 2025</a>
-            <a href="{{ '/events/hackathons/2025-Y-Quantum.html' | relative_url }}">Y Quantum 2025</a>
-            <a href="{{ '/events/hackathons/2025-iQuHack.html' | relative_url }}">iQuHack 2025</a>
-            <a href="{{ '/events/hackathons/2024-SC-Quantathon-v1.html' | relative_url }}">SC Quantathon v1 2024</a>
+            {% assign all_hack_pages = site.pages | where_exp: 'p', "p.path contains 'events/hackathons/'" %}
+            {% assign hack_dated = all_hack_pages | where_exp: 'p', 'p.date' | sort: 'date' | reverse %}
+            {% assign hack_undated = all_hack_pages | where_exp: 'p', 'p.date == nil' | sort: 'title' %}
+            {% for p in hack_dated %}
+              <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+            {% endfor %}
+            {% for p in hack_undated %}
+              <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+            {% endfor %}
           </div>
         </div>
 
-        <a href="{{ '/events/workshops-and-seminars.html' | relative_url }}">Workshops & Seminars</a>
+        <div class="dropdown-submenu">
+          <a href="{{ '/events/workshops-and-seminars.html' | relative_url }}" class="dropdown-btn">Workshops & Seminars</a>
+          <div class="dropdown-content">
+            {% assign all_ws_pages = site.pages | where_exp: 'p', "p.path contains 'events/workshops-and-seminars/'" %}
+            {% assign ws_dated = all_ws_pages | where_exp: 'p', 'p.date' | sort: 'date' | reverse %}
+            {% assign ws_undated = all_ws_pages | where_exp: 'p', 'p.date == nil' | sort: 'title' %}
+            {% for p in ws_dated %}
+              <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+            {% endfor %}
+            {% for p in ws_undated %}
+              <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+            {% endfor %}
+          </div>
+        </div>
         <a href="{{ '/events.html' | relative_url }}">All Events</a>
       </div>
     </div>
@@ -33,9 +48,9 @@
     <div class="dropdown">
       <a href="{{ '/resources.html' | relative_url }}" class="dropdown-btn">Resources</a>
       <div class="dropdown-content">
-        <a href="{{ '/resources/student-work-and-projects.html' | relative_url }}">Student Work & Projects</a>
-        <a href="{{ '/resources/learning-resources.html' | relative_url }}">Learning Resources</a>
-        <a href="{{ '/resources/internships.html' | relative_url }}">Internships</a>
+  <a href="{{ '/resources/learning-resources.html' | relative_url }}">Learning Resources</a>
+  <a href="{{ '/resources/student-work-and-projects.html' | relative_url }}">Student Work & Projects</a>
+        
         <a href="{{ '/resources.html' | relative_url }}">All Resources</a>
       </div>
     </div>

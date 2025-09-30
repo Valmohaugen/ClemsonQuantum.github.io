@@ -206,10 +206,26 @@ title: Home
     <img src="images/Evan.jpg" alt="Evan Hall" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; object-position: center; margin-right: 32px; background: #fff; flex-shrink: 0;">
     <div>
       <h2>Evan Hall | <span>Treasurer</span></h2>
-      <p>Mathematics Ph.D. candidate</p>
+      <p>Mathematics Ph.D. Candidate</p>
       <p class="organizer-description">Research in Quantum Error Correction</p>
       <div style="display: flex; gap: 10px; align-items: center;">
         <a href="https://www.linkedin.com/in/evanlandonhall/">
+          <img src="images/linkedin.png" alt="LinkedIn Profile" style="height: 32px;">
+        </a>
+        <a href="">
+          <img src="images/github cat.png" alt="GitHub Profile" style="height: 32px;">
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="organizer-row">
+    <img src="images/blank-profile.svg" alt="Ashton McEntarffer" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; object-position: center; margin-right: 32px; background: #fff; flex-shrink: 0;">
+    <div>
+      <h2>Ashton McEntarffer | <span>Secretary</span></h2>
+      <p>Junior in Computer Science</p>
+      <p class="organizer-description">Research in xxxxx</p>
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <a href="https://www.linkedin.com/in/ashtonmc/">
           <img src="images/linkedin.png" alt="LinkedIn Profile" style="height: 32px;">
         </a>
         <a href="">
@@ -334,6 +350,30 @@ title: Home
       </div>
     </div>
   </div>
+  <div class="people-card">
+    <div class="people-card-inner">
+      <div class="front">
+  <img src="images/blank-profile.svg" alt="Ashton McEntarffer">
+        <h2>Ashton McEntarffer</h2>
+        <button type="button" onclick="this.closest('.people-card').classList.add('flipped')">About</button>
+      </div>
+      <div class="back">
+        <h2>Ashton McEntarffer</h2>
+        <p>Secretary</p>
+        <p>Junior in Computer Science</p>
+        <p>Research in xxxxx</p>
+        <div style="display: flex; gap: 10px; justify-content: center; align-items: center;">
+          <a href="https://www.linkedin.com/in/ashtonmc/">
+            <img src="images/linkedin.png" alt="LinkedIn Profile" style="height: 32px;">
+          </a>
+          <a href="">
+            <img src="images/github cat.png" alt="GitHub Profile" style="height: 32px;">
+          </a>
+        </div>
+        <button type="button" onclick="this.closest('.people-card').classList.remove('flipped')">Back</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -376,175 +416,7 @@ title: Home
     });
   });
 
-  // Dropdown search results
-  document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.querySelector('.search-input');
-    const searchContainer = document.querySelector('.search');
-    
-    if (!searchInput || !searchContainer) return;
-    
-    const resultsDropdown = document.createElement('div');
-    resultsDropdown.className = 'search-results';
-    resultsDropdown.style.cssText = `
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-      max-height: 300px;
-      overflow-y: auto;
-      z-index: 1000;
-      display: none;
-    `;
-    searchContainer.appendChild(resultsDropdown);
-    
-    function extractPageContent() {
-      const content = [];
-      document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(heading => {
-        const text = heading.textContent.trim();
-        if (text) {
-          content.push({
-            title: text,
-            element: heading,
-            type: 'heading',
-            context: getContextText(heading)
-          });
-        }
-      });
-      
-      document.querySelectorAll('.organizer-row').forEach(row => {
-        const nameElement = row.querySelector('h2');
-        const description = row.querySelector('p');
-        if (nameElement) {
-          const fullText = nameElement.textContent.trim();
-          const descText = description ? description.textContent.trim() : '';
-          content.push({
-            title: fullText,
-            element: row,
-            type: 'person',
-            context: descText
-          });
-        }
-      });
-      
-      document.querySelectorAll('.nav a, .dropdown-content a').forEach(link => {
-        const text = link.textContent.trim();
-        if (text && !text.includes('▶') && text !== '') {
-          content.push({
-            title: text,
-            url: link.getAttribute('href'),
-            type: 'page',
-            context: 'Navigation link'
-          });
-        }
-      });
-      
-      document.querySelectorAll('section p, main p').forEach(paragraph => {
-        const text = paragraph.textContent.trim();
-        if (text.length > 20) {
-          const words = text.split(' ').slice(0, 10).join(' ');
-          content.push({
-            title: words + (text.split(' ').length > 10 ? '...' : ''),
-            element: paragraph,
-            type: 'content',
-            context: text.substring(0, 100) + (text.length > 100 ? '...' : '')
-          });
-        }
-      });
-      
-      return content;
-    }
-    
-    function getContextText(element) {
-      const nextElement = element.nextElementSibling;
-      if (nextElement && nextElement.tagName === 'P') {
-        const text = nextElement.textContent.trim();
-        return text.substring(0, 80) + (text.length > 80 ? '...' : '');
-      }
-      return '';
-    }
-    
-    searchInput.addEventListener('input', function() {
-      const query = this.value.trim().toLowerCase();
-      
-      if (query.length < 2) {
-        resultsDropdown.style.display = 'none';
-        return;
-      }
-      
-      const pageContent = extractPageContent();
-      
-      const results = pageContent.filter(item => 
-        item.title.toLowerCase().includes(query) ||
-        (item.context && item.context.toLowerCase().includes(query))
-      ).slice(0, 8);
-      
-      displayResults(results, query);
-    });
-    
-    function displayResults(results, query) {
-      if (results.length === 0) {
-        resultsDropdown.innerHTML = '<div style="padding: 1rem; color: #666;">No results found</div>';
-        resultsDropdown.style.display = 'block';
-        return;
-      }
-      
-      resultsDropdown.innerHTML = results.map(result => {
-        const clickHandler = result.url ? 
-          `href="${result.url}"` : 
-          `href="#" onclick="scrollToElement(event, this)" data-element-text="${encodeURIComponent(result.title)}"`;
-        
-        return `
-          <a ${clickHandler} style="
-            display: block;
-            padding: 0.75rem 1rem;
-            text-decoration: none;
-            color: #3a185c;
-            border-bottom: 1px solid #eee;
-            transition: background 0.2s;
-          " onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">
-            <div style="font-weight: bold;">${highlightQuery(result.title, query)}</div>
-            <div style="font-size: 0.85rem; color: #666; text-transform: capitalize;">${result.type}</div>
-            ${result.context ? `<div style="font-size: 0.8rem; color: #888; margin-top: 2px;">${highlightQuery(result.context, query)}</div>` : ''}
-          </a>
-        `;
-      }).join('');
-      
-      resultsDropdown.style.display = 'block';
-    }
-    
-    function highlightQuery(text, query) {
-      const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
-      return text.replace(regex, '<mark style="background: yellow; padding: 0;">$1</mark>');
-    }
-    
-    function escapeRegex(string) {
-      return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    }
-    
-    window.scrollToElement = function(event, link) {
-      event.preventDefault();
-      const elementText = decodeURIComponent(link.getAttribute('data-element-text'));
-      
-      const elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, .organizer-row');
-      for (let element of elements) {
-        if (element.textContent.includes(elementText.split('...')[0])) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          resultsDropdown.style.display = 'none';
-          searchInput.value = '';
-          break;
-        }
-      }
-    };
-    
-    document.addEventListener('click', function(e) {
-      if (!searchContainer.contains(e.target)) {
-        resultsDropdown.style.display = 'none';
-      }
-    });
-  });
+  
 
   (function() {
     let nav = document.querySelector('.nav');

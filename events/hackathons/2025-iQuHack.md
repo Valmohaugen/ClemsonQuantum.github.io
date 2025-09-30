@@ -1,6 +1,7 @@
 ---
 layout: default
 title: iQuHack 2025
+date: 2025-02-01 # inferred from filename prefix; adjust if needed
 ---
 
 <main>

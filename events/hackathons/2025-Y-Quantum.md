@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Y Quantum 2025
+date: 2025-04-01 # inferred from filename prefix; adjust if needed
 ---
 
 <main>

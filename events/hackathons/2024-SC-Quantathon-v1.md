@@ -1,6 +1,7 @@
 ---
 layout: default
 title: SC Quantathon v1 2024
+date: 2024-10-01 # inferred from filename prefix; adjust if needed
 ---
 
 <main>

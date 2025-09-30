@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Clemson Hackathon 2026
+date: 2026-10-01 # inferred from filename prefix; adjust if needed
 ---
 
 <main>
