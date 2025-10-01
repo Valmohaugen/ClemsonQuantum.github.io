@@ -4,6 +4,94 @@ body {
   padding: 20px;
   margin: 30px;
 }
+/* Page content container for readable margins */
+.page-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 0 28px; /* add small left padding so content doesn't sit flush */
+}
+
+/* Styling for Markdown-rendered event pages (keeps page source pure Markdown) */
+.page-content h1 {
+  font-size: 2.1rem;
+  margin-bottom: 0.6rem;
+  color: #111;
+}
+.page-content h2 {
+  font-size: 1.35rem;
+  margin-top: 1.25rem;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #eee;
+}
+.page-content h3 {
+  background: #fff;
+  display: block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(10,10,20,0.04);
+  margin-top: 1rem;
+}
+.page-content p {
+  color: #333;
+  font-size: 1rem;
+}
+.page-content ul {
+  background: #fcfcfd;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #f0f0f4;
+  margin-top: 0.5rem;
+}
+.page-content li {
+  margin: 6px 0;
+}
+.page-content h4 {
+  margin: 0.5rem 0 0.25rem 0;
+  font-weight: 600;
+}
+.page-content .schedule-list {
+  background: transparent;
+  padding-left: 0;
+  list-style: none;
+}
+.page-content .schedule-list li {
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(0,0,0,0.04);
+}
+
+@media (min-width: 1000px) {
+  /* slightly widen lists and headings on large screens */
+  .page-content ul { max-width: 920px; }
+}
+
+/* Festival day layout: two columns on desktop, stacked on mobile */
+.ff-day {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 24px;
+  align-items: start;
+  padding: 18px 14px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(10,10,20,0.04);
+}
+.ff-day + .ff-day { margin-top: 12px; }
+.ff-left { /* main description column - intentionally left minimal for content spacing */ padding-right:6px; }
+.ff-right {
+  font-size: 0.95rem;
+  color: #333;
+  background: #fcfcfd;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #f0f0f4;
+}
+
+@media (max-width: 900px) {
+  .ff-day { grid-template-columns: 1fr; }
+  .ff-right { order: 2; }
+}
+
+/* ...existing code... */
 header a {
   margin: 0 0px; 
   text-decoration: none;
